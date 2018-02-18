@@ -1,3 +1,22 @@
-<p>
-  history works!
-</p>
+<mat-card class="day" *ngFor="let day of days">
+  <mat-card-title>{{ day.date | date }}</mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="day.operations">
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+        <mat-cell *matCellDef="let operation"> {{operation.type}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="wallet">
+        <mat-header-cell *matHeaderCellDef>Wallet</mat-header-cell>
+        <mat-cell *matCellDef="let operation"> {{operation.wallet}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell *matCellDef="let operation"> {{operation.amount}} {{operation.currency}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>

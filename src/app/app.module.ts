@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 import { HistoryModule } from './history/history.module';
 
 import { AppComponent } from './app.component';
@@ -13,10 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule,
-    HistoryModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    HistoryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
