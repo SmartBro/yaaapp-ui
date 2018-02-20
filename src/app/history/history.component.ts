@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from './history.service';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css']
+  styleUrls: ['./history.component.css'],
+  providers: [HistoryService]
 })
 export class HistoryComponent implements OnInit {
-  days = [];
+  days: any = [];
   displayedColumns = [ 'type', 'wallet', 'amount' ];
 
-  constructor() { }
+  constructor(private historyService: HistoryService) { }
 
   ngOnInit() {
-    this.days = [ { date: new Date(), operations: [{
-        type: 'restaurant',
-        wallet: 'cash',
-        amount: 100,
-        currency: 'UAH'
-      }] } ];
+    this.historyService.getHistory()
+      .subscribe(data => this.days = data);
   }
 
 }
